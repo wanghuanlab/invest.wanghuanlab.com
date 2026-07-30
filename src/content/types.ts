@@ -13,6 +13,7 @@ export interface ArticleMeta {
   summary: string
   tags?: string[]
   featured?: boolean
+  cover?: string
 }
 
 export interface Article extends ArticleMeta {

@@ -33,7 +33,8 @@ function toMeta(
     ? data.tags.filter((t): t is string => typeof t === 'string')
     : undefined
   const featured = data.featured === true
-  return { topicSlug, slug, title, date, summary, tags, featured }
+  const cover = typeof data.cover === 'string' ? data.cover : undefined
+  return { topicSlug, slug, title, date, summary, tags, featured, cover }
 }
 
 const articles: Article[] = Object.entries(topicModules)

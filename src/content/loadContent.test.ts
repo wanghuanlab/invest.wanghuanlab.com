@@ -50,6 +50,11 @@ describe('loadContent', () => {
     expect(featured.every((article) => article.featured)).toBe(true)
   })
 
+  it('loads cover from featured article frontmatter', () => {
+    const article = getArticle('stocks', 'six-paths-for-ordinary-investors')
+    expect(article?.cover).toBe('/images/six-paths-for-ordinary-investors.png')
+  })
+
   it('returns adjacent articles within a topic', () => {
     const list = getArticlesByTopic('rates')
     expect(list.length).toBeGreaterThanOrEqual(1)

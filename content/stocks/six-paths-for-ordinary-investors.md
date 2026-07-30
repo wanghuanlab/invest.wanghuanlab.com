@@ -7,6 +7,7 @@ tags:
   - strategy
   - framework
 featured: true
+cover: /images/six-paths-for-ordinary-investors.png
 ---
 
 ![六种普通人参与股市路径的研究示意图：指数、波段、股息、周期、价值与成长](/images/six-paths-for-ordinary-investors.png)
