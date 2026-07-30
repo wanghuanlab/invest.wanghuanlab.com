@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "rates",
+    "name": "利率",
+    "summary": "政策利率、曲线形态与流动性传导。",
+    "order": 1
+  },
+  {
+    "slug": "bonds",
+    "name": "国债",
+    "summary": "久期、供需与财政预期如何定价债券。",
+    "order": 2
+  },
+  {
+    "slug": "stocks",
+    "name": "股票",
+    "summary": "盈利、估值与风险偏好的交叉验证。",
+    "order": 3
+  },
+  {
+    "slug": "gold",
+    "name": "黄金",
+    "summary": "实际利率、美元与避险需求的三角关系。",
+    "order": 4
+  },
+  {
+    "slug": "demographics",
+    "name": "人口",
+    "summary": "年龄结构、储蓄与长期需求的底座。",
+    "order": 5
+  },
+  {
+    "slug": "housing",
+    "name": "房产",
+    "summary": "利率、人口与库存共同决定的居住资产。",
+    "order": 6
+  }
+]
