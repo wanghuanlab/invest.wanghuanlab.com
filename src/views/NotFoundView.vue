@@ -6,5 +6,7 @@ const route = useRoute()
 </script>
 
 <template>
-  <NotFoundBlock :path="route.path" />
+  <div class="mx-auto w-full max-w-3xl">
+    <NotFoundBlock :path="route.path" />
+  </div>
 </template>

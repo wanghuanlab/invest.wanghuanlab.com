@@ -2,6 +2,7 @@ import { createSSRApp } from 'vue'
 import { renderToString } from 'vue/server-renderer'
 import { createMemoryHistory, createRouter } from 'vue-router'
 import { describe, expect, it } from 'vitest'
+import { getRecentArticles } from '@/content/loadContent'
 import HomeView from './HomeView.vue'
 
 async function renderHome(): Promise<string> {
@@ -37,5 +38,14 @@ describe('HomeView', () => {
     expect(html).toContain('推荐阅读')
     expect(html).toContain('最近更新')
     expect(html).toContain('静态 Markdown 研究库')
+  })
+
+  it('renders every note in the latest section', async () => {
+    const html = await renderHome()
+    const latestSection = html.slice(html.indexOf('id="latest"'))
+
+    for (const article of getRecentArticles()) {
+      expect(latestSection).toContain(article.title)
+    }
   })
 })

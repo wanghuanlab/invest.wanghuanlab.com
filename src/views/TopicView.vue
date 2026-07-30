@@ -12,7 +12,7 @@ const articles = computed(() => getArticlesByTopic(slug.value))
 </script>
 
 <template>
-  <div v-if="topic">
+  <div v-if="topic" class="mx-auto w-full max-w-3xl">
     <section aria-labelledby="topic-title">
       <p class="font-mono text-xs uppercase tracking-[0.16em] text-accent">
         /topics/{{ slug }}
@@ -55,5 +55,7 @@ const articles = computed(() => getArticlesByTopic(slug.value))
     </section>
   </div>
 
-  <NotFoundBlock v-else :path="route.path" />
+  <div v-else class="mx-auto w-full max-w-3xl">
+    <NotFoundBlock :path="route.path" />
+  </div>
 </template>

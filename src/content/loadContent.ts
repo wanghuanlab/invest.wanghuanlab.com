@@ -72,11 +72,12 @@ export function getArticle(
   )
 }
 
-export function getRecentArticles(limit = 6): ArticleMeta[] {
-  return [...articles]
+export function getRecentArticles(limit?: number): ArticleMeta[] {
+  const sorted = [...articles]
     .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0))
-    .slice(0, limit)
     .map(({ body: _body, ...meta }) => meta)
+
+  return limit === undefined ? sorted : sorted.slice(0, limit)
 }
 
 export function getFeaturedArticles(limit = 6): ArticleMeta[] {

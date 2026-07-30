@@ -7,10 +7,10 @@ tags:
   - strategy
   - framework
 featured: true
-cover: /images/six-paths-for-ordinary-investors.png
+cover: /images/six-paths-for-ordinary-investors-960.png
 ---
 
-![六种普通人参与股市路径的研究示意图：指数、波段、股息、周期、价值与成长](/images/six-paths-for-ordinary-investors.png)
+![六种普通人参与股市路径的研究示意图：指数、波段、股息、周期、价值与成长](/images/six-paths-for-ordinary-investors-960.png)
 
 对普通投资者来说，股票市场并不存在一条人人适用的捷径。更重要的是：看清自己愿意投入多少时间、能承受多大回撤、在哪些领域具备理解优势，然后选择一条能长期执行的路。
 

@@ -6,7 +6,7 @@ import TopicSwatches from '@/components/TopicSwatches.vue'
 import { getFeaturedArticles, getRecentArticles, getTopics } from '@/content/loadContent'
 
 const topics = getTopics()
-const recentArticles = getRecentArticles(6)
+const recentArticles = getRecentArticles()
 const featuredArticle = getFeaturedArticles(1)[0] ?? recentArticles[0]
 const latestArticles = recentArticles.filter(
   (article) =>

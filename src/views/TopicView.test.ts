@@ -34,6 +34,7 @@ describe('TopicView', () => {
     expect(html).toContain('实际利率视角下的黄金')
     expect(html).toContain('后续将接入采集与统计服务')
     expect(html).toContain('第一版不提供图表')
+    expect(html).toContain('class="mx-auto w-full max-w-3xl"')
   })
 
   it('renders the site 404 experience for an unknown topic', async () => {

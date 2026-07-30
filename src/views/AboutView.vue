@@ -5,7 +5,7 @@ const topics = getTopics()
 </script>
 
 <template>
-  <div class="max-w-3xl">
+  <div class="mx-auto w-full max-w-3xl">
     <section aria-labelledby="about-title">
       <p class="font-mono text-xs uppercase tracking-[0.16em] text-accent">About</p>
       <h1

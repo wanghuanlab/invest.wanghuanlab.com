@@ -54,6 +54,7 @@ describe('ArticleView', () => {
     expect(html).toContain('<strong>变的是哪一层利率、持续多久、影响谁的融资成本</strong>')
     expect(html).toContain('<blockquote>')
     expect(html).toContain('返回利率')
+    expect(html).toContain('class="mx-auto w-full max-w-3xl"')
   })
 
   it('hides unavailable adjacent article directions', async () => {

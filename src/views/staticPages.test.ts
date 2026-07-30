@@ -36,6 +36,7 @@ describe('static informational pages', () => {
     }
     expect(html).toContain('采集、分析与统计')
     expect(html).toContain('不构成投资建议')
+    expect(html).toContain('class="mx-auto w-full max-w-3xl"')
   })
 
   it('offers recovery links from the 404 page', async () => {
@@ -46,6 +47,7 @@ describe('static informational pages', () => {
     expect(html).toContain('返回首页')
     expect(html).toContain('浏览主题')
     expect(html).toContain('href="/#topics"')
+    expect(html).toContain('class="mx-auto w-full max-w-3xl"')
   })
 
   it('keeps the API directory reserved with the exact V1 notice', () => {
