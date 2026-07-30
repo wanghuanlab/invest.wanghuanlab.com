@@ -68,7 +68,10 @@ describe('ArticleView', () => {
 
     expect(html).toContain('404')
     expect(html).toContain('页面未找到')
+    expect(html).toContain('没有找到这个页面，地址可能已经变更或输入有误。')
     expect(html).toContain('/topics/gold/nope')
     expect(html).toContain('返回首页')
+    expect(html).toContain('浏览主题')
+    expect(html).toContain('href="/#topics"')
   })
 })

@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { computed, watchEffect } from 'vue'
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import ArticleMeta from '@/components/ArticleMeta.vue'
 import MarkdownRenderer from '@/components/MarkdownRenderer.vue'
+import NotFoundBlock from '@/components/NotFoundBlock.vue'
 import { getAdjacentArticles, getArticle, getTopic } from '@/content/loadContent'
 
 const route = useRoute()
@@ -11,13 +12,6 @@ const articleSlug = computed(() => String(route.params.article ?? ''))
 const article = computed(() => getArticle(topicSlug.value, articleSlug.value))
 const topic = computed(() => getTopic(topicSlug.value))
 const adjacent = computed(() => getAdjacentArticles(topicSlug.value, articleSlug.value))
-
-watchEffect(() => {
-  if (typeof document === 'undefined') return
-  document.title = article.value
-    ? `${article.value.title} | Invest Lab`
-    : '页面未找到 | Invest Lab'
-})
 </script>
 
 <template>
@@ -74,20 +68,5 @@ watchEffect(() => {
     </footer>
   </article>
 
-  <section v-else aria-labelledby="not-found-title">
-    <p class="font-mono text-xs uppercase tracking-[0.16em] text-accent">404</p>
-    <h1
-      id="not-found-title"
-      class="mt-3 font-display text-4xl font-semibold tracking-tight text-ink"
-    >
-      页面未找到
-    </h1>
-    <p class="mt-4 font-mono text-sm text-muted">{{ route.path }}</p>
-    <RouterLink
-      to="/"
-      class="mt-8 inline-block text-sm font-semibold text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-    >
-      返回首页
-    </RouterLink>
-  </section>
+  <NotFoundBlock v-else :path="route.path" />
 </template>

@@ -22,6 +22,10 @@ npm run build
 
 构建结果输出到 `dist/`。如需本地预览构建结果，可运行 `npm run preview`。
 
+## 部署
+
+本站使用 SPA history 路由。生产服务器需要将未匹配到静态文件的路径重写到 `index.html`，再由前端路由接管；使用 Nginx、Caddy 或其他静态服务器时请配置对应的 fallback / rewrite 规则。
+
 ## 新增研究笔记
 
 1. 在对应主题目录创建 `content/<topic>/<article-slug>.md`。`<topic>` 可取 `rates`、`bonds`、`stocks`、`gold`、`demographics` 或 `housing`。

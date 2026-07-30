@@ -4,6 +4,8 @@ import TopicView from '@/views/TopicView.vue'
 import ArticleView from '@/views/ArticleView.vue'
 import AboutView from '@/views/AboutView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
+import { getPageTitle } from './pageTitle'
+import { getScrollPosition } from './scrollBehavior'
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -18,7 +20,13 @@ export const router = createRouter({
     { path: '/about', name: 'about', component: AboutView },
     { path: '/:pathMatch(.*)*', name: 'not-found', component: NotFoundView },
   ],
-  scrollBehavior() {
-    return { top: 0 }
+  scrollBehavior(to) {
+    return getScrollPosition(to)
   },
+})
+
+router.afterEach((to) => {
+  if (typeof document !== 'undefined') {
+    document.title = getPageTitle(to.name, to.params)
+  }
 })

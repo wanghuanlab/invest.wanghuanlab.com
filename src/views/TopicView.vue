@@ -1,18 +1,14 @@
 <script setup lang="ts">
-import { computed, watchEffect } from 'vue'
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import ArticleList from '@/components/ArticleList.vue'
+import NotFoundBlock from '@/components/NotFoundBlock.vue'
 import { getArticlesByTopic, getTopic } from '@/content/loadContent'
 
 const route = useRoute()
 const slug = computed(() => String(route.params.slug ?? ''))
 const topic = computed(() => getTopic(slug.value))
 const articles = computed(() => getArticlesByTopic(slug.value))
-
-watchEffect(() => {
-  if (typeof document === 'undefined') return
-  document.title = topic.value ? `${topic.value.name} | Invest Lab` : '页面未找到 | Invest Lab'
-})
 </script>
 
 <template>
@@ -59,20 +55,5 @@ watchEffect(() => {
     </section>
   </div>
 
-  <section v-else aria-labelledby="not-found-title">
-    <p class="font-mono text-xs uppercase tracking-[0.16em] text-accent">404</p>
-    <h1
-      id="not-found-title"
-      class="mt-3 font-display text-4xl font-semibold tracking-tight text-ink"
-    >
-      页面未找到
-    </h1>
-    <p class="mt-4 font-mono text-sm text-muted">{{ route.path }}</p>
-    <RouterLink
-      to="/"
-      class="mt-8 inline-block text-sm font-semibold text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-    >
-      返回首页
-    </RouterLink>
-  </section>
+  <NotFoundBlock v-else :path="route.path" />
 </template>

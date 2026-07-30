@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { getTopics } from '@/content/loadContent'
+
+const topics = getTopics()
+</script>
+
 <template>
   <div class="max-w-3xl">
     <section aria-labelledby="about-title">
@@ -22,20 +28,13 @@
       </p>
       <div class="mt-7 grid border-l border-t border-ink/20 sm:grid-cols-2">
         <RouterLink
-          v-for="topic in [
-            ['rates', '利率'],
-            ['bonds', '国债'],
-            ['stocks', '股票'],
-            ['gold', '黄金'],
-            ['demographics', '人口'],
-            ['housing', '房产'],
-          ]"
-          :key="topic[0]"
-          :to="`/topics/${topic[0]}`"
+          v-for="topic in topics"
+          :key="topic.slug"
+          :to="`/topics/${topic.slug}`"
           class="group flex items-center justify-between border-b border-r border-ink/20 px-5 py-4 transition-colors hover:bg-ink/[0.04] focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent"
         >
-          <span class="font-semibold text-ink">{{ topic[1] }}</span>
-          <span class="font-mono text-xs text-accent">/{{ topic[0] }}</span>
+          <span class="font-semibold text-ink">{{ topic.name }}</span>
+          <span class="font-mono text-xs text-accent">/{{ topic.slug }}</span>
         </RouterLink>
       </div>
     </section>
