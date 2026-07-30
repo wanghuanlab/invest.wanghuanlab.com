@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ArticleList from '@/components/ArticleList.vue'
+import HomeRecentUpdates from '@/components/HomeRecentUpdates.vue'
 import HomeReadingPanel from '@/components/HomeReadingPanel.vue'
 import TopicGrid from '@/components/TopicGrid.vue'
 import TopicSwatches from '@/components/TopicSwatches.vue'
@@ -17,7 +18,10 @@ const latestArticles = recentArticles.filter(
 
 <template>
   <div>
-    <section aria-labelledby="home-title" class="py-10 sm:py-14 lg:py-20">
+    <section
+      aria-labelledby="home-title"
+      class="pb-10 pt-0 sm:pb-14 sm:pt-2 lg:pb-20 lg:pt-4"
+    >
       <div
         class="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)] lg:items-start lg:gap-16"
       >
@@ -38,21 +42,23 @@ const latestArticles = recentArticles.filter(
           </p>
           <a
             href="#topics"
-            class="mt-9 inline-flex border border-ink bg-ink px-5 py-3 font-mono text-sm text-paper transition-[background-color,color,transform] hover:bg-transparent hover:text-ink active:translate-y-px focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+            class="mt-9 inline-flex w-fit border border-ink bg-ink px-5 py-3 font-mono text-sm text-paper transition-[background-color,color,transform] hover:bg-transparent hover:text-ink active:translate-y-px focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
           >
             浏览主题
           </a>
-          <p class="mt-8 border-l-2 border-accent pl-3 font-mono text-xs tracking-[0.08em] text-muted">
+          <p class="mt-6 border-l-2 border-accent pl-3 font-mono text-xs tracking-[0.08em] text-muted">
             静态 Markdown 研究库
           </p>
-          <TopicSwatches :topics="topics" class="mt-14" />
+          <TopicSwatches :topics="topics" class="mt-10" />
         </div>
 
-        <HomeReadingPanel :featured="featuredArticle" :latest="latestArticles" />
+        <HomeReadingPanel :featured="featuredArticle" />
       </div>
+
+      <HomeRecentUpdates :articles="latestArticles" />
     </section>
 
-    <section id="topics" aria-labelledby="topics-title" class="scroll-mt-6 py-16">
+    <section id="topics" aria-labelledby="topics-title" class="scroll-mt-6 py-12 sm:py-16">
       <h2
         id="topics-title"
         class="mb-8 font-display text-3xl font-semibold tracking-tight text-ink"
