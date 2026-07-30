@@ -3,6 +3,7 @@ import {
   getAdjacentArticles,
   getArticle,
   getArticlesByTopic,
+  getFeaturedArticles,
   getRecentArticles,
   getTopic,
   getTopics,
@@ -33,6 +34,20 @@ describe('loadContent', () => {
     expect(recent).toHaveLength(3)
     expect(recent[0].date >= recent[1].date).toBe(true)
     expect(recent[1].date >= recent[2].date).toBe(true)
+  })
+
+  it('returns only manually featured articles', () => {
+    const featured = getFeaturedArticles()
+    expect(featured).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          topicSlug: 'stocks',
+          slug: 'six-paths-for-ordinary-investors',
+          featured: true,
+        }),
+      ]),
+    )
+    expect(featured.every((article) => article.featured)).toBe(true)
   })
 
   it('returns adjacent articles within a topic', () => {

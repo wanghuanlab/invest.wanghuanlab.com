@@ -64,6 +64,14 @@ body {
   color: var(--color-muted);
 }
 
+.prose-invest img {
+  width: 100%;
+  height: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid color-mix(in srgb, var(--color-ink) 18%, transparent);
+}
+
 .prose-invest a {
   color: var(--color-accent);
   font-weight: 600;

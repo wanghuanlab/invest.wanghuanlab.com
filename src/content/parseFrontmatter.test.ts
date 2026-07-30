@@ -7,6 +7,7 @@ describe('parseFrontmatter', () => {
 title: Hello
 date: 2026-07-30
 summary: A note
+featured: true
 tags:
   - macro
 ---
@@ -18,6 +19,7 @@ Paragraph.
     expect(result.data.title).toBe('Hello')
     expect(result.data.date).toBe('2026-07-30')
     expect(result.data.summary).toBe('A note')
+    expect(result.data.featured).toBe(true)
     expect(result.data.tags).toEqual(['macro'])
     expect(result.content.trim().startsWith('# Body')).toBe(true)
   })

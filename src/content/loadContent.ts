@@ -32,7 +32,8 @@ function toMeta(
   const tags = Array.isArray(data.tags)
     ? data.tags.filter((t): t is string => typeof t === 'string')
     : undefined
-  return { topicSlug, slug, title, date, summary, tags }
+  const featured = data.featured === true
+  return { topicSlug, slug, title, date, summary, tags, featured }
 }
 
 const articles: Article[] = Object.entries(topicModules)
@@ -72,6 +73,14 @@ export function getArticle(
 
 export function getRecentArticles(limit = 6): ArticleMeta[] {
   return [...articles]
+    .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0))
+    .slice(0, limit)
+    .map(({ body: _body, ...meta }) => meta)
+}
+
+export function getFeaturedArticles(limit = 6): ArticleMeta[] {
+  return [...articles]
+    .filter((article) => article.featured)
     .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0))
     .slice(0, limit)
     .map(({ body: _body, ...meta }) => meta)

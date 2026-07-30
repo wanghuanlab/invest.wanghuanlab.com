@@ -8,7 +8,7 @@ import TopicRail from '@/components/TopicRail.vue'
   <div class="min-h-screen flex flex-col">
     <SiteHeader />
     <TopicRail />
-    <main class="mx-auto w-full max-w-3xl flex-1 px-4 py-8">
+    <main class="mx-auto w-full max-w-6xl flex-1 px-4 py-8">
       <RouterView />
     </main>
     <SiteFooter />
