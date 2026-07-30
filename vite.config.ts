@@ -6,6 +6,7 @@ import { fileURLToPath, URL } from 'node:url'
 export default defineConfig({
   server: {
     host: '0.0.0.0',
+    allowedHosts: ['invest.wanghuanlab.com'],
   },
   plugins: [vue(), tailwindcss()],
   resolve: {
