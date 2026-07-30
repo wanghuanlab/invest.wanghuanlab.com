@@ -12,6 +12,8 @@ export interface ArticleMeta {
   date: string
   summary: string
   tags?: string[]
+  featured?: boolean
+  cover?: string
 }
 
 export interface Article extends ArticleMeta {

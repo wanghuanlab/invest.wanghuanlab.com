@@ -6,6 +6,8 @@ function parseScalar(value: string): unknown {
   ) {
     return v.slice(1, -1)
   }
+  if (v === 'true') return true
+  if (v === 'false') return false
   return v
 }
 

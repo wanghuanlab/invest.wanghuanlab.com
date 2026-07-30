@@ -12,6 +12,18 @@ const topics = getTopics()
       <div>
         <p class="font-display text-base font-semibold text-ink">Invest Lab</p>
         <p class="mt-1 text-sm text-muted">个人研究笔记，非投资建议</p>
+        <div class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-muted">
+          <a
+            href="https://beian.miit.gov.cn/"
+            target="_blank"
+            rel="noreferrer"
+            class="underline-offset-4 transition-colors hover:text-accent hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            苏ICP备2026043670号
+          </a>
+          <span aria-hidden="true">·</span>
+          <span>SUZHOU · CN</span>
+        </div>
       </div>
       <nav class="flex max-w-xl flex-wrap gap-x-5 gap-y-2" aria-label="页脚主题导航">
         <RouterLink

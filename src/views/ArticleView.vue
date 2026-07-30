@@ -15,7 +15,11 @@ const adjacent = computed(() => getAdjacentArticles(topicSlug.value, articleSlug
 </script>
 
 <template>
-  <article v-if="article && topic" aria-labelledby="article-title" class="mx-auto max-w-3xl">
+  <article
+    v-if="article && topic"
+    aria-labelledby="article-title"
+    class="mx-auto w-full max-w-3xl"
+  >
     <ArticleMeta
       :title="article.title"
       :date="article.date"
@@ -68,5 +72,7 @@ const adjacent = computed(() => getAdjacentArticles(topicSlug.value, articleSlug
     </footer>
   </article>
 
-  <NotFoundBlock v-else :path="route.path" />
+  <div v-else class="mx-auto w-full max-w-3xl">
+    <NotFoundBlock :path="route.path" />
+  </div>
 </template>
