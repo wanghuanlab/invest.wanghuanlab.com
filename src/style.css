@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-ink: #0b1f33;
+  --color-accent: #1f6f5b;
+  --color-paper: #e8eef2;
+  --color-muted: #5c6b76;
+  --font-display: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+html {
+  @apply bg-paper text-ink antialiased;
+  font-family: var(--font-body);
+}
+
+body {
+  min-height: 100vh;
+  background-image:
+    linear-gradient(rgba(11, 31, 51, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 31, 51, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-color: var(--color-paper);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
