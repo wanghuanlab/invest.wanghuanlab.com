@@ -1,8 +1,16 @@
+<script setup lang="ts">
+import SiteFooter from '@/components/SiteFooter.vue'
+import SiteHeader from '@/components/SiteHeader.vue'
+import TopicRail from '@/components/TopicRail.vue'
+</script>
+
 <template>
   <div class="min-h-screen flex flex-col">
-    <main class="flex-1 px-4 py-10 max-w-3xl mx-auto w-full">
-      <p class="font-display text-2xl font-semibold text-ink">Invest Lab</p>
-      <p class="mt-2 text-muted">scaffold ok</p>
+    <SiteHeader />
+    <TopicRail />
+    <main class="mx-auto w-full max-w-3xl flex-1 px-4 py-8">
+      <RouterView />
     </main>
+    <SiteFooter />
   </div>
 </template>
