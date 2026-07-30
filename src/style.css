@@ -24,6 +24,77 @@ body {
   background-color: var(--color-paper);
 }
 
+.prose-invest {
+  margin-top: 2.5rem;
+  color: var(--color-ink);
+  font-size: 1.0625rem;
+  line-height: 1.85;
+}
+
+.prose-invest h2 {
+  margin-top: 2.75rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+
+.prose-invest p,
+.prose-invest ul,
+.prose-invest blockquote,
+.prose-invest pre {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.prose-invest ul {
+  padding-left: 1.4rem;
+  list-style: disc;
+}
+
+.prose-invest li + li {
+  margin-top: 0.4rem;
+}
+
+.prose-invest blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding: 0.2rem 0 0.2rem 1.25rem;
+  color: var(--color-muted);
+}
+
+.prose-invest a {
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.prose-invest code {
+  border: 1px solid color-mix(in srgb, var(--color-ink) 15%, transparent);
+  background: color-mix(in srgb, var(--color-ink) 6%, transparent);
+  padding: 0.15em 0.35em;
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+}
+
+.prose-invest pre {
+  overflow-x: auto;
+  border: 1px solid color-mix(in srgb, var(--color-ink) 18%, transparent);
+  background: var(--color-ink);
+  padding: 1.25rem;
+  color: var(--color-paper);
+  line-height: 1.65;
+}
+
+.prose-invest pre code {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
