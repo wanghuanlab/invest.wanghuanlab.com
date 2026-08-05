@@ -103,6 +103,31 @@ body {
   color: inherit;
 }
 
+.prose-invest table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.prose-invest th,
+.prose-invest td {
+  border: 1px solid color-mix(in srgb, var(--color-ink) 18%, transparent);
+  padding: 0.6rem 0.85rem;
+  text-align: left;
+}
+
+.prose-invest th {
+  background: color-mix(in srgb, var(--color-ink) 6%, transparent);
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.prose-invest tr:nth-child(even) {
+  background: color-mix(in srgb, var(--color-ink) 2%, transparent);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

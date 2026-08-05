@@ -39,13 +39,14 @@ summary: 一句话概括这篇笔记。
 tags:
   - macro
   - example
-featured: true
 ---
 ```
 
 3. 在 frontmatter 后使用 Markdown 编写正文，保存后刷新开发页面或重新构建。
 
-`title`、`date` 和 `summary` 为必填字段；`date` 使用 `YYYY-MM-DD` 格式。`tags` 为可选字符串数组。将可选字段 `featured` 设为 `true`，文章会显示在首页的「推荐文章」中。文件所在目录决定所属主题，文件名决定文章 URL。
+`title`、`date` 和 `summary` 为必填字段；`date` 使用 `YYYY-MM-DD` 格式。`tags` 为可选字符串数组。
+
+> **注**：首页默认推荐阅读固定为《适合普通投资者在股市稳定获利的策略分析》。新增笔记时请勿设置 `featured: true`，除非用户显式要求更换首页推荐文章。
 
 如需新增主题，请同时更新 `content/topics.json` 并创建对应的 `content/<topic>/` 目录。
 
