@@ -149,7 +149,12 @@ echo "  remote revision: $REMOTE_REVISION"
 }
 
 echo "[5/5] HTTPS 健康检查"
-HTTP_CODE="$(curl -sS -o /dev/null -w '%{http_code}' --max-time 30 "$HEALTH_URL" || true)"
+HTTP_CODE="000"
+for _ in $(seq 1 30); do
+  HTTP_CODE="$(curl -sS -o /dev/null -w '%{http_code}' --max-time 5 "$HEALTH_URL" || true)"
+  [[ "$HTTP_CODE" == "200" ]] && break
+  sleep 1
+done
 echo "  $HEALTH_URL → HTTP ${HTTP_CODE:-000}"
 [[ "$HTTP_CODE" == "200" ]] || {
   echo "健康检查未通过；请检查 1Panel 运行时日志。" >&2; exit 1;
