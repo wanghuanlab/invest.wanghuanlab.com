@@ -24,7 +24,29 @@ npm run build
 
 ## 部署
 
-本站使用 SPA history 路由。生产服务器需要将未匹配到静态文件的路径重写到 `index.html`，再由前端路由接管；使用 Nginx、Caddy 或其他静态服务器时请配置对应的 fallback / rewrite 规则。
+生产站点是 `https://invest.wanghuanlab.com/`。1Panel 目前将该域名反向代理到 Node 运行时容器 `node24-runtime` 的 Vite 服务（端口 `5173`）；`/opt/1panel/www/sites/invest.wanghuanlab.com/index` 是 1Panel 创建的站点目录，但不是当前页面的实际来源。应用的服务器工作目录为 `/opt/apps/invest.wanghuanlab.com`，并从 `codeup/main` 更新。
+
+发布时使用仓库脚本：
+
+```bash
+npm run deploy
+```
+
+脚本会要求工作区干净，依次运行测试与生产构建、推送 `codeup/main`、通过 SSH 让服务器工作目录快进更新、重启 Node 运行时并检查 HTTPS 首页。它会在远端存在未提交改动、分支不为 `main` 或容器未运行时停止，不会覆盖服务器上的未知改动。
+
+常用选项：
+
+```bash
+# 只运行本地测试和构建，检查发布计划
+npm run deploy -- --dry-run
+
+# 无交互发布（仅限受控环境）
+DEPLOY_CONFIRM=yes npm run deploy
+```
+
+SSH 主机、端口、远端路径、容器名和健康检查地址可以通过 `DEPLOY_SSH_HOST`、`DEPLOY_SSH_PORT`、`DEPLOY_REMOTE_APP_DIR`、`DEPLOY_CONTAINER_NAME`、`DEPLOY_HEALTH_URL` 覆盖；完整参数见 `npm run deploy -- --help`。脚本不会保存 SSH 密码或私钥。
+
+站点使用 SPA history 路由；若未来改为静态托管，需在 1Panel/Nginx 中将未命中静态文件的请求回退到 `index.html`，并相应替换本部署脚本。
 
 ## 新增研究笔记
 
