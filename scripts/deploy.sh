@@ -160,4 +160,4 @@ echo "  $HEALTH_URL → HTTP ${HTTP_CODE:-000}"
   echo "健康检查未通过；请检查 1Panel 运行时日志。" >&2; exit 1;
 }
 
-echo "部署完成：$HEALTH_URL（$LOCAL_REVISION）"
+echo "部署完成：${HEALTH_URL}（${LOCAL_REVISION}）"
