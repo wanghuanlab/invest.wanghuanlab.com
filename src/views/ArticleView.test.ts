@@ -64,6 +64,19 @@ describe('ArticleView', () => {
     expect(html).not.toContain('下一篇')
   })
 
+  it('renders the fed rate history article with tables and charts', async () => {
+    const html = await renderArticle('/topics/rates/fed-rate-hikes-and-cuts-history')
+
+    expect(html).toContain('美联储历史加息与降息全景复盘')
+    expect(html).toContain('2026-08-15')
+    expect(html).toContain('利率')
+    expect(html).toContain('美联储基准利率历史转折点轨迹')
+    expect(html).toContain('<table')
+    expect(html).toContain('历次加息周期总幅度对比')
+    expect(html).toContain('预防性降息 vs 衰退式降息')
+    expect(html).toContain('class="portfolio-chart-wrapper')
+  })
+
   it('renders the site 404 experience for a missing article', async () => {
     const html = await renderArticle('/topics/gold/nope')
 

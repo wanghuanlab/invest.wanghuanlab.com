@@ -68,7 +68,7 @@ tags:
 
 `title`、`date` 和 `summary` 为必填字段；`date` 使用 `YYYY-MM-DD` 格式。`tags` 为可选字符串数组。
 
-> **注**：首页默认推荐阅读固定为《适合普通投资者在股市稳定获利的策略分析》。新增笔记时请勿设置 `featured: true`，除非用户显式要求更换首页推荐文章。
+> **重要规范**：首页「推荐阅读」位置的文章严禁自动替换，当前固定为《适合普通投资者在股市稳定获利的策略分析》（`content/stocks/six-paths-for-ordinary-investors.md`）。新增或修改笔记时一律不得添加 `featured: true`，如需更换必须由用户手动指定或明确要求。详细规则见 [`.agents/rules/featured-article.md`](.agents/rules/featured-article.md)。
 
 如需新增主题，请同时更新 `content/topics.json` 并创建对应的 `content/<topic>/` 目录。
 

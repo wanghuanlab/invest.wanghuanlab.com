@@ -15,6 +15,7 @@ interface Section {
     title?: string
     dates: string[]
     series: SeriesItem[]
+    unit?: string
   }
 }
 
@@ -72,6 +73,7 @@ const sections = computed<Section[]>(() => {
         :title="sec.chartData.title"
         :dates="sec.chartData.dates"
         :series="sec.chartData.series"
+        :unit="sec.chartData.unit"
       />
     </template>
   </div>

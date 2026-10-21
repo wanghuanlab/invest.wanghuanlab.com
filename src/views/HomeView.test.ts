@@ -36,6 +36,7 @@ describe('HomeView', () => {
 
     expect(html).toContain('个人投资思考笔记')
     expect(html).toContain('推荐阅读')
+    expect(html).toContain('适合普通投资者在股市稳定获利的策略分析')
     expect(html).toContain('最近更新')
     expect(html).toContain('静态 Markdown 研究库')
   })

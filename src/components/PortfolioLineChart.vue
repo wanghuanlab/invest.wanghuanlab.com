@@ -12,9 +12,11 @@ const props = withDefaults(
     title?: string
     dates: string[]
     series: SeriesItem[]
+    unit?: string
   }>(),
   {
     title: '投资组合走势分析',
+    unit: '',
   }
 )
 
@@ -68,6 +70,39 @@ function getPathD(data: number[]): string {
     const y = getY(val)
     return i === 0 ? `M ${x} ${y}` : `${acc} L ${x} ${y}`
   }, '')
+}
+
+// 判断 dates 是否跨年份或为年份短格式
+const isMultiYear = computed(() => {
+  if (props.dates.length === 0) return false
+  const years = new Set(
+    props.dates.map((d) => (d.includes('-') ? d.split('-')[0] : d.slice(0, 4)))
+  )
+  return years.size > 1 || props.dates.some((d) => d.length <= 4)
+})
+
+// 计算 X 轴标签步长，避免过多点重叠
+const labelStep = computed(() => {
+  if (props.dates.length <= 8) return 1
+  if (props.dates.length <= 16) return 2
+  return Math.ceil(props.dates.length / 8)
+})
+
+function shouldShowXLabel(index: number): boolean {
+  if (index === 0 || index === props.dates.length - 1) return true
+  return index % labelStep.value === 0
+}
+
+function formatXLabel(d: string): string {
+  if (!isMultiYear.value) {
+    return d.length > 5 ? d.slice(5) : d
+  }
+  if (d.length <= 4) return d
+  if (d.includes('-')) {
+    const [year, month] = d.split('-')
+    return month ? `${year.slice(2)}/${month}` : year
+  }
+  return d
 }
 
 function handleMouseMove(event: MouseEvent) {
@@ -147,24 +182,25 @@ function handleMouseLeave() {
             font-size="11"
             font-family="var(--font-mono)"
           >
-            {{ tick }}
+            {{ tick }}{{ unit }}
           </text>
         </g>
 
         <!-- X Axis Labels -->
         <g class="x-labels text-xs">
-          <text
-            v-for="(d, i) in dates"
-            :key="d"
-            :x="getX(i)"
-            :y="height - 12"
-            text-anchor="middle"
-            fill="var(--color-muted)"
-            font-size="11"
-            font-family="var(--font-mono)"
-          >
-            {{ d.slice(5) }}
-          </text>
+          <template v-for="(d, i) in dates" :key="d">
+            <text
+              v-if="shouldShowXLabel(i)"
+              :x="getX(i)"
+              :y="height - 12"
+              text-anchor="middle"
+              fill="var(--color-muted)"
+              font-size="11"
+              font-family="var(--font-mono)"
+            >
+              {{ formatXLabel(d) }}
+            </text>
+          </template>
         </g>
 
         <!-- Lines -->
@@ -239,7 +275,7 @@ function handleMouseLeave() {
             <span class="w-2 h-2 rounded-full inline-block" :style="{ backgroundColor: item.color }"></span>
             <span>{{ item.name }}</span>
           </span>
-          <span class="font-bold">{{ item.data[activeIndex] }}</span>
+          <span class="font-bold">{{ item.data[activeIndex] }}{{ unit }}</span>
         </div>
       </div>
     </div>
